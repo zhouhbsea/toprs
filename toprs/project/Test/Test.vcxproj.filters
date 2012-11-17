@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Listener">
+      <UniqueIdentifier>{d0923b87-2277-4dba-863c-beb711bdc1be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{ecb4c426-234e-44f6-8ebc-c48da3573fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connection">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{ab7c8004-1b38-4e21-9fab-f9208d414254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{1224f664-578d-49f2-b348-4a8565ad684f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageSource">
+      <UniqueIdentifier>{f388b1b4-051a-4af5-93c4-79f8250e0114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{767cc671-949d-4595-b70f-ed7382242a84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{c4ead33f-9709-4fee-81c4-73e332db573f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="..\..\src\connection\toprsConnAbleFilter.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\connection\toprsConnAbleReader.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\connection\toprsConnAbleWriter.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\listener\toprsListener.cpp">
+      <Filter>Listener</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\listener\toprsListenerManager.cpp">
+      <Filter>Listener</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\event\toprsEvent.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\base\toprsDpt.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\base\toprsIpt.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\toprsCommon.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\base\toprsIRect.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\base\toprsDRect.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\base\toprsImg.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\imagesource\toprsImageSource.cpp">
+      <Filter>ImageSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\io\toprsImageReader.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\connection\toprsConnAble.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\connection\toprsConnAbleFilter.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\connection\toprsConnAbleReader.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\connection\toprsConnAbleWriter.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\connection\toprsConnection.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\listener\toprsListener.h">
+      <Filter>Listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\listener\toprsListenerManager.h">
+      <Filter>Listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\event\toprsEvent.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\event\toprsEventId.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\annSignal.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\hustImage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\toprsConstants.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\toprsPtr.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\toprsDpt.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\toprsIpt.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\toprsCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\toprsDRect.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\toprsIRect.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\base\toprsImg.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\interface\toprsInterfaceImageSource.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\imagesource\toprsImageSource.h">
+      <Filter>ImageSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\io\toprsImageReader.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

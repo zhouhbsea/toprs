@@ -1,0 +1,47 @@
+//**************************************************************
+//Copyright (C) 2012 TOPRS Inc.
+//
+//Author: Huabing Zhou
+//
+//Data: 2012-8-21
+//
+//**************************************************************
+#ifndef TOPRSIMAGESOURCE_H
+#define TOPRSIMAGESOURCE_H
+
+
+#include "interface/toprsInterfaceImageSource.h"
+#include "connection/toprsConnection.h"
+
+
+
+//template<class T> class toprsConnection;
+//template<class T> class toprsConnectionAble;
+class toprsImageSource : public toprsInterfaceImageSource
+{
+public:
+       toprsImageSource();
+       virtual ~toprsImageSource();
+	   virtual bool initialize();
+	   virtual shared_ptr<toprsImg> getTile(const Rect& rect, int resLevel);	
+	   virtual bool canConnectInputTo(toprsInterfaceImageSource* input);
+	   /** 
+	   * listener Function
+	   */
+	   virtual void connectInputEvent(toprsEvent& event);
+
+	   virtual void connectInputTo(toprsInterfaceImageSource* input);
+
+      /**
+       * For RTTI support
+       * get object to return the correct casted base pointer
+       * for RTTI casting
+       */
+       virtual toprsInterfaceImageSource* getInterface() { return this; }
+       virtual const toprsInterfaceImageSource* getInterface() const { return this; }
+
+	   friend toprsInterfaceImageSource& operator >>(toprsInterfaceImageSource& left, toprsInterfaceImageSource& right);
+protected:
+       toprsImageSource(const toprsImageSource& rhs);
+       const toprsImageSource& operator= (const toprsImageSource&);
+#endif

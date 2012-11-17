@@ -1,0 +1,37 @@
+//**************************************************************
+//Copyright (C) 2012 TOPRS Inc.
+//
+//Author: Huabing Zhou
+//
+//Data: 2012-8-21
+//
+//**************************************************************
+#ifndef TOPRSINTERFACEIMAGESOURCE_H
+#define TOPRSINTERFACEIMAGESOURCE_H
+
+#include <vector>
+#include <memory>
+using std::tr1::shared_ptr;
+
+
+class toprsImageData;
+class toprsImg;
+class Rect;
+class toprsEvent;
+
+
+class toprsInterfaceImageSource
+{
+public:
+	virtual ~toprsInterfaceImageSource(){};
+	virtual bool initialize() = 0;
+	virtual shared_ptr<toprsImg> getTile(const Rect& rect, int resLevel = 0) = 0;	
+	virtual bool canConnectInputTo(toprsInterfaceImageSource* inter) = 0;
+	virtual void connectInputTo(toprsInterfaceImageSource* input) = 0;
+	/** 
+	 * Listner Function
+	 */
+	virtual void connectInputEvent(toprsEvent& event) = 0;
+}
+
+#endif
