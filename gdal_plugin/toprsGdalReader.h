@@ -13,29 +13,50 @@ public:
 	virtual std::string getName()const;
 	virtual std::string className()const;
 	virtual bool open();
+	virtual std::shared_ptr<toprsImg> getTile(const toprsIRect& tileRect, int resLevel=0);
+
 	virtual void close() ;
 	virtual bool isOpen()const  = 0;
-	virtual int getNumberOfLines(int resLevel = 0) const = 0;
-	virtual int getNumberOfSamples(int resLevel = 0) const = 0;
-	std::string filterSubDatasetsString(const std::string& subString);
+	virtual int getNumberOfLines(int resLevel = 0) const;
+	virtual int getNumberOfSamples(int resLevel = 0) const;
 	virtual int getNumberOfInputBands() const;
 	virtual int getNumberOfOutputBands() const;
     virtual toprsIRect getImageRectangle(int reduced_res_level = 0) const;
 
 	virtual toprsDataType getOutputScalarType() const;
+	
+
+	virtual bool setOutputBandList(const std::vector<int>& band_list);
+
+
+
+
+
+	GDALDriverH getDriver() { return theDriver; }
 	toprsDataType getInputScalarType() const;
 
 
+private:
+	std::shared_ptr<toprsImg> getTileBlockRead(const toprsIRect& tileRect,int resLevel);
+
+	std::string filterSubDatasetsString( const std::string& subString );
+
+	void loadIndexTo3BandTile(const toprsIRect& clipRect,int aGdalBandStart = 1,int anToprsBandStart = 0);
+	template<class InputType, class OutputType>
+	void loadIndexTo3BandTileTemplate(InputType in,	OutputType out,
+		                              const toprsIRect& clipRect,
+		                              int aGdalBandStart = 1,
+		                              int anToprsBandStart = 0);
+	
 	bool isIndexTo3Band(int bandNumber = 1)const;
 	bool isIndexTo1Band(int bandNumber = 1)const;
 	int getIndexBandOutputNumber(int bandNumber)const;
 	bool isIndexed(int aGdalBandNumber = 1)const;
-
 	void populateLut();
 	void computeMinMax();
+	void getMaxSize(int resLevel,int& maxX,	int& maxY)const;
+	GDALRasterBandH resolveRasterBand( int resLevel,int aGdalBandIndex )const;
 
-
-private:
 	GDALDatasetH        theDataset;
 	GDALDriverH         theDriver;
 
@@ -48,12 +69,12 @@ private:
 	double*                     theMinPixValues;
 	double*                     theMaxPixValues;
 	double*                     theNullPixValues;
-	toprs_uint32                theEntryNumberToRender;
+	int                         theEntryNumberToRender;
 	std::vector<std::string>    theSubDatasets;
 	bool                        theIsComplexFlag;
 	bool                        theAlphaChannelFlag;
 	bool                        m_preservePaletteIndexesFlag;
-	std::vector<toprs_uint32>        m_outputBandList;
+	std::vector<int>            m_outputBandList;
 	bool                        m_isBlocked;
 };
 #endif

@@ -2,9 +2,9 @@
 //
 
 //#include "toprsConnAble.h"
-#include "e:\[8]work\Test\TopRS\include\connection\toprsConnAbleReader.h"
-#include "e:\[8]work\Test\TopRS\include\connection\toprsConnAbleFilter.h"
-#include "e:\[8]work\Test\TopRS\include\connection\toprsConnAble.h"
+#include "connection\toprsConnAbleReader.h"
+#include "connection\toprsConnAbleFilter.h"
+#include "connection\toprsConnAble.h"
 
 #include "connection/toprsConnection.h"
 #include<vector>

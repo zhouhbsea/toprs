@@ -111,6 +111,7 @@
     <ClCompile Include="..\..\src\io\toprsImageReader.cpp" />
     <ClCompile Include="..\..\src\listener\toprsListener.cpp" />
     <ClCompile Include="..\..\src\listener\toprsListenerManager.cpp" />
+    <ClCompile Include="..\..\src\utility\toprsString.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="..\..\include\io\toprsImageReader.h" />
     <ClInclude Include="..\..\include\listener\toprsListener.h" />
     <ClInclude Include="..\..\include\listener\toprsListenerManager.h" />
+    <ClInclude Include="..\..\include\utility\toprsString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

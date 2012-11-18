@@ -32,6 +32,9 @@
     <Filter Include="Factory">
       <UniqueIdentifier>{d3e7cf7d-b8ce-4660-9951-30138f4385ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{a7e1b3c2-e5d4-47e4-ad35-f2930c9acf08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp" />
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\gdal_plugin\toprsGdalReader.cpp">
       <Filter>gdal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\toprsString.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\gdal_plugin\toprsGdalReader.h">
       <Filter>gdal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utility\toprsString.h">
+      <Filter>utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

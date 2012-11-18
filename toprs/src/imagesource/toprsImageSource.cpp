@@ -216,13 +216,13 @@ int toprsImageSource::getNumberOfDecimationLevels() const
 	return 0;
 }
 
-void toprsImageSource::getDecimationFactor( int resLevel, toprsDpt& result ) const
+void toprsImageSource::getDecimationFactors( int resLevel, toprsDpt& result ) const
 {
 	toprsImageSource* inter = static_cast<toprsImageSource*>(theConnection->getInput(0));
 
 	if(inter)
 	{
-		return inter->getDecimationFactor(resLevel, result);
+		return inter->getDecimationFactors(resLevel, result);
 	}
 }
 
@@ -232,9 +232,10 @@ void toprsImageSource::getDecimationFactors( std::vector<toprsDpt>& decimations 
 
 	if(inter)
 	{
-		return inter->getDecimationFactor(decimations);
+		return inter->getDecimationFactors(decimations);
 	}
 }
+
 
 //toprsInterfaceImageSource& operator >>(toprsInterfaceImageSource& left, toprsInterfaceImageSource& right)
 //{

@@ -22,15 +22,18 @@ public:
 	virtual toprsIRect getBoundingRect(int resLevel = 0) const;
 	virtual void getDecimationFactor(int resLevel, toprsDpt& result) const;
     virtual void getDecimationFactors(std::vector<toprsDpt>& decimations) const;
-    //virtual int getNumberOfDecimationLevels() const;
-    //virtual int getNumberOfReducedResSets()const;
+    virtual int getNumberOfDecimationLevels() const;
+    virtual int getNumberOfReducedResSets()const;
     virtual void setFilename(const std::string filename);
     virtual const std::string& getFilename()const;
-	//virtual bool isValidRLevel(int resLevel) const;
+	virtual bool isValidRLevel(int resLevel) const;
 	bool canConnectMyInputTo(int inputIndex,const toprsInterfaceImageSource* object) const;
 	virtual bool isBandSelector() const;
-	//virtual bool setOutputToInputBandList();
-	//virtual bool setOutputBandList(const std::vector<int>& band_list);
+
+	virtual bool setOutputToInputBandList();
+	virtual bool setOutputBandList(const std::vector<int>& band_list);
+	virtual bool setOutputBandList(const std::vector<int>& inBandList,	std::vector<int>& outBandList);
+
 	virtual int getImageTileWidth() const = 0;
 	virtual int getImageTileHeight() const = 0;
 	virtual double getMinPixelValue(int band=0)const;
@@ -50,7 +53,7 @@ protected:
 	std::string theImageFile;
 	std::string theOverviewFile;
 	std::string theSupplementaryDirectory;
-	vector<toprsIpt> theValidImageVertices;
+	std::vector<toprsIpt> theValidImageVertices;
 	toprsImg theData;
 	std::vector<toprsDpt> theDecimationFactors;
 	std::shared_ptr<toprsNBandLutDataObject> theLut;

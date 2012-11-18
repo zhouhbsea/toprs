@@ -39,7 +39,7 @@ public:
 	virtual bool isIndexedData() const;
 
 	//void getValidImageVertices(std::vector<toprsIpt>& validVertices,toprsVertexOrdering ordering,int resLevel)const
-	virtual void getDecimationFactor(int resLevel, toprsDpt& result)const;
+	virtual void getDecimationFactors(int resLevel, toprsDpt& result)const;
     virtual void getDecimationFactors(std::vector<toprsDpt>& decimations) const;
     virtual int getNumberOfDecimationLevels() const;
 	   /** 

@@ -7,7 +7,7 @@ toprsIRect toprsImageReader::getImageRectangle( int resLevel /*= 0*/ ) const
 {
 	toprsIRect result;
 
-	if( isOpen() /*&& /*isValidRLevel(resLevel)*/ )
+	if( isOpen() && isValidRLevel(resLevel) )
 	{
 		int lines   = getNumberOfLines(resLevel);
 		int samples = getNumberOfSamples(resLevel);
@@ -119,6 +119,9 @@ bool toprsImageReader::open( const std::string& imageFile )
 
 void toprsImageReader::close()
 {
+	//theOverview = 0;//xizhi
+	//theGeometry = 0;
+	theValidImageVertices.clear();
 	theDecimationFactors.clear();
 }
 
@@ -140,6 +143,106 @@ bool toprsImageReader::hasData() const
 void toprsImageReader::completeOpen()
 {
 	theData.setDataType(getOutputScalarType());
+}
+
+bool toprsImageReader::isBandSelector() const
+{
+	return true;
+}
+
+bool toprsImageReader::isValidRLevel( int resLevel ) const
+{
+	bool result = false;
+
+	const int LEVELS = getNumberOfDecimationLevels();
+
+	if ( !theStartingResLevel) // Not an overview.
+	{
+		result = (resLevel < LEVELS);
+	}
+	else  // Used as overview.
+	{
+		if (resLevel >= theStartingResLevel)
+		{
+			//---
+			// Adjust the res level to be zero based for this overview before
+			// checking.
+			//---
+			result = ( (resLevel - theStartingResLevel) < LEVELS);
+		}
+	}
+
+	return result;
+}
+
+int toprsImageReader::getNumberOfDecimationLevels() const
+{
+	int result = 1; // Add r0
+	//if (theOverview.valid())
+	//{
+	//	result += theOverview->getNumberOfDecimationLevels();//xizhi
+	//}
+	return result;
+}
+
+int toprsImageReader::getNumberOfReducedResSets() const
+{
+	 return getNumberOfDecimationLevels();
+}
+
+bool toprsImageReader::setOutputToInputBandList()
+{
+	return false;
+}
+
+bool toprsImageReader::setOutputBandList( const std::vector<int>& band_list )
+{
+	bool result = false;
+	if ( isBandSelector() )
+	{
+		std::vector<int> bandList;
+		toprsImageSource::getOutputBandList( bandList );
+		result = setOutputBandList( bandList );
+	}
+	return result;
+}
+
+bool toprsImageReader::setOutputBandList( const std::vector<int>& inBandList, std::vector<int>& outBandList )
+{
+	bool result = false;
+
+	const int INPUT_BANDS  = getNumberOfInputBands();
+	const int OUTPUT_BANDS = inBandList.size();
+
+	if ( INPUT_BANDS && OUTPUT_BANDS )
+	{
+		result = true;
+		outBandList.resize( OUTPUT_BANDS );
+		for ( int band = 0; band < OUTPUT_BANDS; ++band )
+		{
+			if ( inBandList[band] < INPUT_BANDS )
+			{
+				outBandList[band] = inBandList[band];
+			}
+			else // Out of range...
+			{
+				result = false;
+				break;
+			}
+		}
+		//xizhi
+		//if ( result && theOverview.valid() )
+		//{
+		//result = theOverview->setOutputBandList( inBandList );
+		//}
+	}
+
+	if ( result == false )
+	{
+		toprsImageSource::getOutputBandList( outBandList ); // Set to identity.
+	}
+
+	return result;
 }
 
 
